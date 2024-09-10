@@ -17,10 +17,10 @@ const fetchUsers = async () => {
 
 const filterUsers = (users, nameFilter, usernameFilter, emailFilter, phoneFilter) => {
     return users.filter((user) => {
-        return user.name.toLowerCase().includes(nameFilter.toLowerCase()) &&
-            user.username.toLowerCase().includes(usernameFilter.toLowerCase()) &&
-            user.email.toLowerCase().includes(emailFilter.toLowerCase()) &&
-            user.phone.toLowerCase().includes(phoneFilter.toLowerCase());
+        return user.name.toLowerCase().includes(nameFilter.trim().toLowerCase()) &&
+            user.username.toLowerCase().includes(usernameFilter.trim().toLowerCase()) &&
+            user.email.toLowerCase().includes(emailFilter.trim().toLowerCase()) &&
+            user.phone.toLowerCase().includes(phoneFilter.trim().toLowerCase());
     });
 }
 
