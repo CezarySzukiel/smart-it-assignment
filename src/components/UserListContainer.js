@@ -38,12 +38,15 @@ function UserListContainer() {
         fetchUsers().then((users) => {
             dispatch(setUsers(users));
         });
+    }, []);
+
+
+    useEffect(() => {
         if (isFirstRender && users) {
             setIsFirstRender(false);
             dispatch(setFilteredUsers(users));
         }
-    }, []);
-
+    }, [users]);
     useEffect(() => {
         if (users) {
             dispatch(setFilteredUsers(filterUsers(users, nameFilter, usernameFilter, emailFilter, phoneFilter)));
