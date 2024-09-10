@@ -1,16 +1,9 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { thunk } from 'redux-thunk';
-
-const initialState = {};
-function exampleReducer(state = initialState, action) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+import usersReducer from './usersReducer';
 
 const rootReducer = combineReducers({
-  example: exampleReducer,
+  users: usersReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
