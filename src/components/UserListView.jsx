@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 
 function UserListView(props) {
     const {handleFilterChange} = props;
-    const users = useSelector(state => state.users.users);
     const filteredUsers = useSelector(state => state.users.filteredUsers);
     const nameFilter = useSelector(state => state.users.nameFilter);
     const usernameFilter = useSelector(state => state.users.usernameFilter);

@@ -51,7 +51,7 @@ function UserListContainer() {
         if (users) {
             dispatch(setFilteredUsers(filterUsers(users, nameFilter, usernameFilter, emailFilter, phoneFilter)));
         }
-    }, [nameFilter, usernameFilter, emailFilter, phoneFilter]);
+    }, [users, nameFilter, usernameFilter, emailFilter, phoneFilter]);
 
     const handleFilterChange = (target) => {
         const value = target.value;
