@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import UserListView from "./UserListView";
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     setEmailFilter,
     setFilteredUsers,
@@ -12,7 +12,7 @@ import {
 } from "../store/actions";
 import { RootState } from '../store/store';
 import type { User } from '../store/usersReducer';
-import {ThunkDispatch} from "redux-thunk";
+import { ThunkDispatch } from "redux-thunk";
 
 const fetchUsers = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');

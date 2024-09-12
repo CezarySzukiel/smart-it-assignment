@@ -1,4 +1,4 @@
-import { Reducer } from 'redux';
+import { Reducer, UnknownAction } from 'redux';
 
 import {
     SET_USERS,
@@ -18,7 +18,7 @@ export interface User {
     phone: string;
 }
 
-interface UsersState {
+export interface UsersState {
     users: User[] | [] | unknown;
     nameFilter: string | unknown;
     usernameFilter: string | unknown;
@@ -37,9 +37,9 @@ const initialState: UsersState = {
 };
 
 
-const usersReducer: Reducer<UsersState, UserActionTypes> = (
+const usersReducer: Reducer<UsersState, UserActionTypes | UnknownAction, UsersState> = (
     state = initialState,
-    action
+    action: UserActionTypes | UnknownAction
 ): UsersState => {
     switch (action.type) {
         case SET_USERS:

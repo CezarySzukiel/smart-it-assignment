@@ -1,8 +1,8 @@
 import './userListView.css';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import React from "react";
-import {User} from "../store/usersReducer";
+import { User } from "../store/usersReducer";
 
 interface UserListViewProps {
     handleFilterChange: (name: string, value: string) => void;
