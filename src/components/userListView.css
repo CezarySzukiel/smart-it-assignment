@@ -1,6 +1,7 @@
 table {
     border: black 1px solid;
     border-collapse: collapse;
+    box-shadow: rgba(115, 115, 115, 0.55) 0 0 5px 1px;
 }
 
 th, td {
@@ -8,9 +9,32 @@ th, td {
     padding: 10px;
 }
 
+th {
+    background-color: rgb(214, 214, 214);
+}
+
 .user-list-view {
     margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.even {
+    background-color: rgb(214, 214, 214);
+}
+
+.table-title {
+    margin: 0 0 0.5rem 0;
+}
+
+.search-div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.search-icon {
+    max-height: 1rem;
+    max-width: 1rem;
 }

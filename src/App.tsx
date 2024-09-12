@@ -1,7 +1,8 @@
 import './App.css';
-import UserListContainer from "./components/UserListContainer";
+import UserListContainer from './components/UserListContainer';
+import React from "react";
 
-function App() {
+const App: React.FC = () => {
     return (
         <div className="App">
             <UserListContainer/>

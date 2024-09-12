@@ -1,21 +1,26 @@
 import {useEffect, useState} from "react";
 import UserListView from "./UserListView";
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {
-    setUsers,
-    setNameFilter,
-    setUsernameFilter,
     setEmailFilter,
-    setPhoneFilter,
     setFilteredUsers,
+    setNameFilter,
+    setPhoneFilter,
+    setUsernameFilter,
+    setUsers,
+    UserActionTypes,
 } from "../store/actions";
+import { RootState } from '../store/store';
+import type { User } from '../store/usersReducer';
+import {ThunkDispatch} from "redux-thunk";
+import { AnyAction } from 'redux';
 
 const fetchUsers = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     return await response.json();
 };
 
-const filterUsers = (users, nameFilter, usernameFilter, emailFilter, phoneFilter) => {
+const filterUsers = (users: User[], nameFilter: string, usernameFilter: string, emailFilter: string, phoneFilter: string) => {
     return users.filter((user) => {
         return user.name.toLowerCase().includes(nameFilter.trim().toLowerCase()) &&
             user.username.toLowerCase().includes(usernameFilter.trim().toLowerCase()) &&
@@ -25,12 +30,12 @@ const filterUsers = (users, nameFilter, usernameFilter, emailFilter, phoneFilter
 }
 
 function UserListContainer() {
-    const dispatch = useDispatch();
-    const users = useSelector(state => state.users.users);
-    const nameFilter = useSelector(state => state.users.nameFilter);
-    const usernameFilter = useSelector(state => state.users.usernameFilter);
-    const emailFilter = useSelector(state => state.users.emailFilter);
-    const phoneFilter = useSelector(state => state.users.phoneFilter);
+    const dispatch: ThunkDispatch<RootState, void, UserActionTypes> = useDispatch();
+    const users = useSelector((state: RootState) => state.users.users);
+    const nameFilter = useSelector((state: RootState) => state.users.nameFilter);
+    const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter);
+    const emailFilter = useSelector((state: RootState) => state.users.emailFilter);
+    const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter);
 
     const [isFirstRender, setIsFirstRender] = useState(true);
 
@@ -38,7 +43,7 @@ function UserListContainer() {
         fetchUsers().then((users) => {
             dispatch(setUsers(users));
         });
-    }, []);
+    }, [dispatch]);
 
 
     useEffect(() => {
@@ -46,16 +51,14 @@ function UserListContainer() {
             setIsFirstRender(false);
             dispatch(setFilteredUsers(users));
         }
-    }, [users]);
+    }, [users, dispatch, isFirstRender]);
     useEffect(() => {
         if (users) {
             dispatch(setFilteredUsers(filterUsers(users, nameFilter, usernameFilter, emailFilter, phoneFilter)));
         }
-    }, [users, nameFilter, usernameFilter, emailFilter, phoneFilter]);
+    }, [users, nameFilter, usernameFilter, emailFilter, phoneFilter, dispatch]);
 
-    const handleFilterChange = (target) => {
-        const value = target.value;
-        const name = target.name;
+    const handleFilterChange = (name: string, value: string) => {
         switch (name) {
             case 'name':
                 dispatch(setNameFilter(value));
