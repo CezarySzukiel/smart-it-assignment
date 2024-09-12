@@ -14,7 +14,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
     const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter) as string;
     const emailFilter = useSelector((state: RootState) => state.users.emailFilter) as string;
     const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter) as string;
-    const icon = 'smart-it-assignment/icons8-search-50.png';
+    const icon = './smart-it-assignment/icons8-search-50.png';
     return (
         <div className={'user-list-view'}>
             <table>
