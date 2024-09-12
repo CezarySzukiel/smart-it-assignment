@@ -2,17 +2,18 @@ import './userListView.css';
 import {useSelector} from 'react-redux';
 import { RootState } from '../store/store';
 import React from "react";
+import {User} from "../store/usersReducer";
 
 interface UserListViewProps {
     handleFilterChange: (name: string, value: string) => void;
 }
 
 const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
-    const filteredUsers = useSelector((state: RootState) => state.users.filteredUsers);
-    const nameFilter = useSelector((state: RootState) => state.users.nameFilter);
-    const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter);
-    const emailFilter = useSelector((state: RootState) => state.users.emailFilter);
-    const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter);
+    const filteredUsers = useSelector((state: RootState) => state.users.filteredUsers) as User[];
+    const nameFilter = useSelector((state: RootState) => state.users.nameFilter) as string;
+    const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter) as string;
+    const emailFilter = useSelector((state: RootState) => state.users.emailFilter) as string;
+    const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter) as string;
 
     return (
         <div className={'user-list-view'}>
@@ -74,7 +75,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
                 </tr>
                 </thead>
                 <tbody>
-                {filteredUsers && filteredUsers.map((user) => (
+                {filteredUsers && filteredUsers.map((user: User) => (
                     <tr key={user.id} className={user.id % 2 === 0 ? 'even' : 'odd'}>
                         <td>{user.name}</td>
                         <td>{user.username}</td>

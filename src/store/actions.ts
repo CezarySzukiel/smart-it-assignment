@@ -1,4 +1,5 @@
 import type { User } from './usersReducer';
+import {UnknownAction} from "redux";
 
 export const SET_USERS = 'SET_USERS';
 export const SET_NAME_FILTER = 'SET_NAME_FILTER';
@@ -43,7 +44,8 @@ export type UserActionTypes =
     | SetUsernameFilterAction
     | SetEmailFilterAction
     | SetPhoneFilterAction
-    | SetFilteredUsersAction;
+    | SetFilteredUsersAction
+    | UnknownAction;
 
 export const setUsers = (users: User[]): UserActionTypes => ({
     type: SET_USERS,
@@ -71,7 +73,7 @@ export const setPhoneFilter = (filter: string): UserActionTypes => ({
     payload: filter,
 });
 
-export const setFilteredUsers = (users: User[]): UserActionTypes => ({
+export const setFilteredUsers = (users: User[]): SetFilteredUsersAction => ({
     type: SET_FILTERED_USERS,
     payload: users,
 });

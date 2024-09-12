@@ -1,3 +1,5 @@
+import { Reducer } from 'redux';
+
 import {
     SET_USERS,
     SET_NAME_FILTER,
@@ -17,12 +19,12 @@ export interface User {
 }
 
 interface UsersState {
-    users: User[] | [];
-    nameFilter: string;
-    usernameFilter: string;
-    emailFilter: string;
-    phoneFilter: string;
-    filteredUsers: User[];
+    users: User[] | [] | unknown;
+    nameFilter: string | unknown;
+    usernameFilter: string | unknown;
+    emailFilter: string | unknown;
+    phoneFilter: string | unknown;
+    filteredUsers: User[] | unknown;
 }
 
 const initialState: UsersState = {
@@ -35,7 +37,10 @@ const initialState: UsersState = {
 };
 
 
-const usersReducer = (state = initialState, action: UserActionTypes): UsersState => {
+const usersReducer: Reducer<UsersState, UserActionTypes> = (
+    state = initialState,
+    action
+): UsersState => {
     switch (action.type) {
         case SET_USERS:
             return {

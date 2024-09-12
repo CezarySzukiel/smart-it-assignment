@@ -13,7 +13,6 @@ import {
 import { RootState } from '../store/store';
 import type { User } from '../store/usersReducer';
 import {ThunkDispatch} from "redux-thunk";
-import { AnyAction } from 'redux';
 
 const fetchUsers = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -31,11 +30,11 @@ const filterUsers = (users: User[], nameFilter: string, usernameFilter: string, 
 
 function UserListContainer() {
     const dispatch: ThunkDispatch<RootState, void, UserActionTypes> = useDispatch();
-    const users = useSelector((state: RootState) => state.users.users);
-    const nameFilter = useSelector((state: RootState) => state.users.nameFilter);
-    const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter);
-    const emailFilter = useSelector((state: RootState) => state.users.emailFilter);
-    const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter);
+    const users = useSelector((state: RootState) => state.users.users) as User[];
+    const nameFilter = useSelector((state: RootState) => state.users.nameFilter) as string;
+    const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter) as string;
+    const emailFilter = useSelector((state: RootState) => state.users.emailFilter) as string;
+    const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter) as string;
 
     const [isFirstRender, setIsFirstRender] = useState(true);
 
