@@ -14,7 +14,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
     const usernameFilter = useSelector((state: RootState) => state.users.usernameFilter) as string;
     const emailFilter = useSelector((state: RootState) => state.users.emailFilter) as string;
     const phoneFilter = useSelector((state: RootState) => state.users.phoneFilter) as string;
-
+    const icon = 'smart-it-assignment/icons8-search-50.png';
     return (
         <div className={'user-list-view'}>
             <table>
@@ -23,7 +23,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
                     <th>
                         <p className='table-title'>Name</p>
                         <div className='search-div'>
-                            <img src='/icons8-search-50.png' alt='search icon' className='search-icon'/>
+                            <img src={icon} alt='search icon' className='search-icon'/>
                             <input
                                 type="text"
                                 name='name'
@@ -36,7 +36,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
                     <th>
                         <p className='table-title'>Username</p>
                         <div className='search-div'>
-                            <img src='/icons8-search-50.png' alt='search icon' className='search-icon'/>
+                            <img src={icon} alt='search icon' className='search-icon'/>
                             <input
                                 type="text"
                                 name='username'
@@ -49,7 +49,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
                     <th>
                     <p className='table-title'>Email</p>
                         <div className='search-div'>
-                            <img src='/icons8-search-50.png' alt='search icon' className='search-icon'/>
+                            <img src={icon}  alt='search icon' className='search-icon'/>
                             <input
                                 type="text"
                                 name='email'
@@ -62,7 +62,7 @@ const UserListView: React.FC<UserListViewProps> = ({ handleFilterChange }) => {
                     <th>
                         <p className='table-title'>Phone</p>
                         <div className='search-div'>
-                            <img src='/icons8-search-50.png' alt='search icon' className='search-icon'/>
+                            <img src={icon}  alt='search icon' className='search-icon'/>
                             <input
                                 type="text"
                                 name='phone'
