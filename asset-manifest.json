@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/smart-it-assignment/static/css/main.2600cd37.css",
-    "main.js": "/smart-it-assignment/static/js/main.1693bbe9.js",
+    "main.js": "/smart-it-assignment/static/js/main.bfe2346e.js",
     "index.html": "/smart-it-assignment/index.html",
     "main.2600cd37.css.map": "/smart-it-assignment/static/css/main.2600cd37.css.map",
-    "main.1693bbe9.js.map": "/smart-it-assignment/static/js/main.1693bbe9.js.map"
+    "main.bfe2346e.js.map": "/smart-it-assignment/static/js/main.bfe2346e.js.map"
   },
   "entrypoints": [
     "static/css/main.2600cd37.css",
-    "static/js/main.1693bbe9.js"
+    "static/js/main.bfe2346e.js"
   ]
 }
